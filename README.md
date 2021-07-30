@@ -78,7 +78,7 @@ Instagram has an enormous image database “labeled” by the number of likes; h
 
 ### To Do List
 - [x] Initial commit
-- [ ] Dockerize (create docker image)
+- [x] Dockerize (create docker image)
 - [ ] Scrape 5000 posts for model performance increase
 - [ ] Apply clusterization to generate new features
 
@@ -101,7 +101,9 @@ pip install -r requirements.txt
 ```
 In case you face issues with keras package, uninstall keras and keras-nightly and reinstall keras again.
 
-### Installation
+### Installation and usage
+
+#### Using Git
 
 1. Clone the repo
 ```sh
@@ -118,19 +120,29 @@ pip install -r requirements.txt
  All of the parameters should be separated by spaces.
 
 ```sh
-python3 updateMap.py 'data scientist' 2.5 2.5 2.5 2.5 2.5 800 1000
+url1='https://url.com/url1.png'
+url2='https://url.com/url1.png'
+url3='https://url.com/url1.png'
+caption1='caption1'
+caption2='caption2'
+caption3='caption3'
+python3 instaseer.py $url1';'$url2';'$url3 "$caption1';'$caption2';'$caption3"
+```
+#### Using Docker Image
+
+1. Pull the Docker Image from [Docker Hub](https://hub.docker.com/r/inotin/instaseer)
+2. Run the container providing directory for output files (use absolute path), image URLs and corresponding captions as follows
+```sh
+url1='https://url.com/url1.png'
+url2='https://url.com/url1.png'
+url3='https://url.com/url1.png'
+caption1='caption1'
+caption2='caption2'
+caption3='caption3'
+docker run -it -v /host/path/for/outputs:/instaseer/results instaseer $url1';'$url2';'$url3 "$caption1';'$caption2';'$caption3"
 ```
 
-<!-- USAGE EXAMPLES -->
-## Usage
-Run the script providing product names and keywords separated by ';'
-```sh
-url1=''
-caption1=''
-url2=''
-caption2=''
-python3 instaSeer.py url1';'url2 caption1';'caption2
-```
+
 
 The script generates a table with data and scores for each post and saves it into results/ folder for further use e.g., embed into iframe as it's done on [my website](https://notin.it/instaSeer)
 
